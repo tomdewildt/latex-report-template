@@ -1,0 +1,163 @@
+\documentclass[10pt, letterpaper]{report}
+
+% ==================================================
+%                    Configuration
+% ==================================================
+
+% === General ===
+\usepackage[utf8]{inputenc}                                             % Set input encoding
+\usepackage[english]{babel}                                             % Set input language
+\usepackage{textcomp}                                                   % Extended text companion fonts
+\usepackage{subfiles}                                                   % Allow sub files
+\usepackage{url}                                                        % Allow urls
+\usepackage{hyperref}                                                   % Allow hyperlinks
+\usepackage{comment}                                                    % Allow multiline comments
+\usepackage{eurosym}                                                    % Allow euro symbol
+\usepackage{gensymb}                                                    % Allow generic symbols
+\usepackage{soul}                                                       % Allow underlining and striking out
+\usepackage[toc]{appendix}                                              % Enhanced appendices
+\usepackage{geometry}                                                   % Allow document customization
+\geometry{a4paper}                                                      % Set document margins
+
+% === Header & Footer ===
+\usepackage{fancyhdr}                                                   % Allow header & footer customization
+\pagestyle{fancy}                                                       % Set page style
+\fancyhf{}                                                              % Remove existing header & footer
+\lhead{}                                                                % Set left header
+\chead{}                                                                % Set center header
+\rhead{}                                                                % Set right header
+\lfoot{}                                                                % Set left footer
+\cfoot{\thepage}                                                        % Set center footer
+\rfoot{}                                                                % Set right footer
+\renewcommand{\headrulewidth}{0pt}                                      % Remove header line
+\renewcommand{\footrulewidth}{0pt}                                      % Remove footer line
+
+% === Title, Chapters & Sections ===
+\usepackage{authblk}                                                    % Allow multiple authors
+\usepackage{titlesec}                                                   % Allow title customization
+
+\titleformat{\chapter}
+    {\normalsize\LARGE\bfseries}{\thechapter}{12pt}{}                   % Set chapter style
+
+\titleformat{\section}
+    {\normalsize\large\bfseries}{\thesection}{12pt}{}                   % Set section style
+
+\titleformat{\subsection}
+    {\normalsize\normalsize\bfseries}{\thesubsection.}{12pt}{}          % Set subsection style
+
+\titleformat{\subsubsection}
+    {\small\itshape}{\thesubsubsection}{4pt}{}                          % Set subsubsection style
+\titlespacing{\subsubsection}{0pt}{12pt}{0pt}                           % Set subsubsection spacing
+\renewcommand{\thesubsubsection}{}                                      % Set subsubsection numbering
+
+% === Formatting ===
+\usepackage{parskip}                                                    % Set vertical space between sections
+
+% === Citations ===
+\usepackage{natbib}                                                     % Set citation style (apa)
+\bibliographystyle{apalike}                                             % Set bibliography style (apa)
+
+% === Figures & Tables ===
+\usepackage{graphicx}                                                   % Allow images
+\usepackage{subcaption}                                                 % Allow subcaptions
+\usepackage{wrapfig}                                                    % Allow figure text wrapping
+
+\usepackage{tabularx}                                                   % Enhanced tables
+\usepackage{booktabs}                                                   % Enhanced tables
+\usepackage{lscape}                                                     % Allow landscape tables
+\usepackage{multirow}                                                   % Allow multiple rows
+\usepackage{longtable}                                                  % Allow multipage tables
+
+\usepackage{float}                                                      % Enhanced placement
+\usepackage[format=plain, labelfont={it}, textfont=it]{caption}         % Set caption style
+
+% === Mathematics ===
+\usepackage{amsmath}                                                    % Enhanced mathematical formulas
+\usepackage{amssymb}                                                    % Extended mathematical symbols
+\usepackage{amsfonts}                                                   % Extended mathematical fonts
+
+% === Code ===
+\usepackage{minted}                                                     % Allow code highlighting
+
+% === Colors ===
+\usepackage{xcolor}                                                     % Allow colors
+
+% ==================================================
+%                      Document
+% ==================================================
+
+\begin{document}
+
+% === Title ===
+\begin{titlepage}
+\begin{center}
+    \textsc{\LARGE Institution}\\[1.5cm]
+    \textsc{\Large Course}\\[0.5cm]
+    \textsc{\large Document}\\[0.5cm]
+
+    \rule{\linewidth}{0.25mm}\\[0.4cm]
+    {\huge\bfseries Latex Report Template}\\[0.4cm]
+    \rule{\linewidth}{0.25mm}\\[1.5cm]
+
+    \begin{table}[H]
+        \large
+        \centering
+        \begin{tabular}{l l}
+            John Doe & 0000000 \\
+            Jane Doe & 0000000
+        \end{tabular}
+        \vspace{2cm}
+    \end{table}
+
+    \large\today
+
+    \vfill
+
+    \includegraphics[width=0.25\linewidth]{Fig/logo.png}\\[1cm]
+\end{center}
+\end{titlepage}
+
+% === Abstract ===
+\Large{\textbf{Abstract}}
+
+\normalsize{\input{Ch/0_abstract}}
+
+% === Table of contents ===
+\tableofcontents
+
+% === Chapters ===
+\chapter{Introduction}
+\label{sec:introduction}
+\input{Ch/1_introduction}
+
+\chapter{Theory}
+\label{sec:theory}
+\input{Ch/2_theory}
+
+\chapter{Methods}
+\label{sec:methods}
+\input{Ch/3_methods}
+
+\chapter{Results}
+\label{sec:results}
+\input{Ch/4_results}
+
+\chapter{Conclusion}
+\label{sec:conclusion}
+\input{Ch/5_conclusion}
+
+% === References ===
+\bibliography{references.bib}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+% === Appendix ===
+\begin{appendices}
+\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+
+\chapter{Appendix A}
+\label{app:appendix_a}
+\input{App/1_appendix_a}
+
+\end{appendices}
+
+\end{document}
